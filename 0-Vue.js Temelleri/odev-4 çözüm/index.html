@@ -1,0 +1,32 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="exercise">
+   <!-- 1) Efekti Butona basarak başlatın. Efekt "highlight" ve/veya "shrink" class'ları arasında değişmelidir. Bu değişim her bir interval döngüsünde olmalıdır. ("effect" id' li div'e o anki aktif olan class eklenecektir.) -->
+   <div>
+      <button @click="startEffect">Efekti Başlat!</button>
+      <div :class="updateEffectClass" id="effect"></div>
+   </div>
+   <!-- 2) Birkaç tane CSS Class'ı üreterek bu Class'ları Array Syntax'ı ile aşağıdaki <div>' e ekleyiniz -->
+   <div :class="['font','yellow']">Henüz bir class'ım yok :(</div>
+   <!-- 3) Örnek birkaç tane Class üreterek (Ya da ürettiklerinizi kullanarak) <input> içerisine Class adı girerek hemen alttaki <div> elementine bu yazılan Class'ı eklemeyi yapınız. -->
+   <div>
+      <input type="text" v-model="myClass">
+      <div :class="myClass">selam</div>
+   </div>
+   <!-- 4) Kullanıcının Class isimlerini girebileceği iki adet <input> elementimiz var. Bunları kullanarak hemen alttaki <div> elementinin Class'larini attached etmesini sağlayınız  -->
+   <div>
+      <input type="text" v-model="userClass">
+      <input type="text" v-model="userClass2">
+      <div :class="[userClass,userClass2]">soru 4</div>
+   </div>
+   <!-- 5) 3.Uygulamayı tekrarlayın. Fakat bu sefer Class Adı yerine Denk gelecek Style Kodlarını ekleyiniz.  -->
+   <div>
+      <input type="text" v-model="myStyle.backgroundColor">
+      <div :style="myStyle">soru5</div>
+   </div>
+   <!-- 6) setInterval ve Style Binding kullanarak Basit bir progress bar üretin. Progress bar' ın çalışmasını buton'a basarak başlatın. -->
+   <div>
+      <button v-on:click="startProgress">Progress İşlemini Başlat!</button>
+      <br><br>
+      <div class="progress" :style="{width: progressWidth+ 'px'}"></div>
+   </div>
+</div>

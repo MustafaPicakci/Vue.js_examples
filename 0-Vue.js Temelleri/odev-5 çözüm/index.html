@@ -1,0 +1,33 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="exercise">
+  <!-- 1) Butona tıklayarak <p> elementleri arasında bir Toggle İşlevi yapın. Hem v-if hem de v-show syntax'larını kullanarak bu işlemi gerçekleştiriniz. Aralarındaki farkı Öğeyi İncele diyerek bu iki syntax farkını gözlemleyiniz -->
+  <div>
+    <button @click="visible=!visible">Toggle</button>
+    <p v-if=visible>Beni Görebiliyor musun?</p>
+    <p v-else>Ya da beni görebiliyor musun?</p>
+    
+    <p v-show="visible">Beni Görebiliyor musun?</p>
+    <p v-show="!visible">Ya da beni görebiliyor musun?</p>
+  </div>
+  <!-- 2) Array kullanarak bir <ul> listesi oluşturunuz. Liste içerisinde hem Array'deki verinin değerini hem de index numarasını her bir elementin içerisine yazdırınız  -->
+  <ul>
+    <li v-for="(item,index) in array"> {{item}} - {{index}} </li>
+  </ul>
+  <!-- 3) Yan taraftaki objenin tüm key ve value verilerini yazdırınız: customObject: {title: 'Game of Thrones',author: 'George R.R',books: '7'}. Ayrıca tüm elementlerin index numarasını da yazdırınız. -->
+  <ul>
+    <li v-for="(value,key,index) in customObject">{{key}}-{{value}}-{{index}}</li>
+  </ul>
+  <!-- 4) Yan taraftaki objenin tüm value değerlerini yazdırınız. Ayrıca iç içe bir loop daha kurarak Array içerisindeki verileri de yazdırınız : { name: 'NesnedLoop', id: 19,data: [4.3, 2.67, 10.42, 1402] } (ipucu: v-for ve v-if Directive'lerinin beraber kullanımı bunu başarmanızı sağlayacaktır.) -->
+  <ul>
+   <li v-for="value in testData">
+     <template v-if="Array.isArray(value)">
+       <p v-for="item in value">
+       {{item}}
+       </p>
+     </template>
+     <template v-else>{{value}}</template>
+   </li>
+  </ul>
+</div>
+<br><br><br><br><br>

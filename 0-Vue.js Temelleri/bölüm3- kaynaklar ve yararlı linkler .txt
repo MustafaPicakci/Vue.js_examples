@@ -1,0 +1,11 @@
+JSFiddle Linkleri:
+
+Koşullar (v-if ve v-show): https://jsfiddle.net/gkandemir/d2emtsqc/20/
+
+Listeler: https://jsfiddle.net/gkandemir/pj5eq63z/30/
+
+Daha Fazla Link:
+
+Resmi Döküman - Koşullar: https://vuejs.org/v2/guide/conditional.html
+
+Resmi Döküman - Listeler: https://vuejs.org/v2/guide/list.html

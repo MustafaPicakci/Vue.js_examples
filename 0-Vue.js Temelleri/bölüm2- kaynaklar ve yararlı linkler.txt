@@ -1,0 +1,30 @@
+Bölüm Kaynakları ve Yararlı Linkler
+JSFiddle Linkleri:
+
+Başlangıç: https://jsfiddle.net/gkandemir/160goLq4/2/
+
+Template Syntax: https://jsfiddle.net/gkandemir/s3n9f208/
+
+Events: https://jsfiddle.net/gkandemir/0pezowtv/
+
+Two-Way-Binding: https://jsfiddle.net/gkandemir/u8sj29ac/7/
+
+Computed Properties & Watch: https://jsfiddle.net/gkandemir/kxmbpu8z/28/
+
+Dinamik Class: https://jsfiddle.net/gkandemir/g4n1s8za/20/
+
+Dinamik Style: https://jsfiddle.net/gkandemir/7p3mwchy/11/
+
+
+
+Daha Fazla Link:
+
+Resmi Döküman - Başlangıç: http://vuejs.org/guide/
+
+Resmi Döküman - Template Syntax: http://vuejs.org/guide/syntax.html
+
+Resmi Döküman - Events: http://vuejs.org/guide/events.html
+
+Resmi Döküman - Computed Properties & Watchers: http://vuejs.org/guide/computed.html
+
+Resmi Döküman - Class ve Style Binding: http://vuejs.org/guide/class-and-style.html
