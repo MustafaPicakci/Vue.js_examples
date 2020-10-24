@@ -1,6 +1,6 @@
 <template>
   <div>
-    <lamb-component></lamb-component>
+    <lamp-component></lamp-component>
   </div>
 </template>
 
