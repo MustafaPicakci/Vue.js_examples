@@ -6,6 +6,7 @@
     </p>
     <p>kullanıcı adı : {{ name }}</p>
     <p>kullanıcı adı : {{ switchName() }}</p>
+    <p>kullacını yaşı: {{age}}</p>
     <button @click="sendToParent()">Veriyi parent componenete gönder</button>
   </div>
 </template>
@@ -19,6 +20,7 @@ export default {
       type: String,
       default: " default isim",
     },
+    age:Number
   },
   methods:{
     switchName(){
