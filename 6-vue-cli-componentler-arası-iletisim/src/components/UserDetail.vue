@@ -5,13 +5,26 @@
       Ben User.vue isimli Parent Component'in içerisindeki bir Child componentim
     </p>
     <p>kullanıcı adı : {{ name }}</p>
+    <p>kullanıcı adı : {{ switchName() }}</p>
   </div>
 </template>
 
 <script>
-  export default{
-    props:["name"]
+export default {
+  //props:["name"]
+  //props validation uygulanacaksa aşağıdaki gibi kullanılır.
+  props: {
+    name: {
+      type: String,
+      default: " default isim",
+    },
+  },
+  methods:{
+    switchName(){
+      return this.name.split("").reverse().join("");
+    }
   }
+};
 </script>
 
 <style scoped>
