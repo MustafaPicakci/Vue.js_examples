@@ -6,6 +6,7 @@
     </p>
     <p>kullanıcı adı : {{ name }}</p>
     <p>kullanıcı adı : {{ switchName() }}</p>
+    <button @click="sendToParent()">Veriyi parent componenete gönder</button>
   </div>
 </template>
 
@@ -22,6 +23,9 @@ export default {
   methods:{
     switchName(){
       return this.name.split("").reverse().join("");
+    },
+    sendToParent(){
+      this.$emit("data","Mahmut Tuncer");
     }
   }
 };
