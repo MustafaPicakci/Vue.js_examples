@@ -5,20 +5,23 @@
       Ben User.vue isimli Parent Component'in içerisindeki bir diğer Child
       componentim
     </p>
-    <p>kullanıcı yaşı : {{age}}</p>
+    <p>kullanıcı yaşı : {{ age }}</p>
     <button @click="changeAge">yaş bilgisini değiştir</button>
   </div>
 </template>
 <script>
-  export default{
-    props:['age'],
-    methods:{
-      changeAge(){
-        this.age=49;
-        this.$emit("ageWasEdited",this.age);
-      }
-    }
-  }
+import {eventBus} from "../main";
+
+export default {
+  props: ["age"],
+  methods: {
+    changeAge() {
+      this.age = 49;
+      //this.$emit("ageWasEdited",this.age);
+      eventBus.$emit("ageWasEdited", this.age); // eventi eventbus üzerinden yayıyoruz
+    },
+  },
+};
 </script>
 
 <style scoped>

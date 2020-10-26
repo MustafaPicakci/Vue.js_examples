@@ -6,12 +6,14 @@
     </p>
     <p>kullanıcı adı : {{ name }}</p>
     <p>kullanıcı adı : {{ switchName() }}</p>
-    <p>kullacını yaşı: {{age}}</p>
+    <p>kullacını yaşı: {{ age }}</p>
     <button @click="sendToParent()">Veriyi parent componenete gönder</button>
   </div>
 </template>
 
 <script>
+import {eventBus} from "../main";
+
 export default {
   //props:["name"]
   //props validation uygulanacaksa aşağıdaki gibi kullanılır.
@@ -20,16 +22,24 @@ export default {
       type: String,
       default: " default isim",
     },
-    age:Number
+    age: Number,
   },
-  methods:{
-    switchName(){
-      return this.name.split("").reverse().join("");
+  created() {
+    eventBus.$on("ageWasEdited", (age)=> {
+      this.age = age;
+    });
+  },
+  methods: {
+    switchName() {
+      return this.name
+        .split("")
+        .reverse()
+        .join("");
     },
-    sendToParent(){
-      this.$emit("data","Mahmut Tuncer");
-    }
-  }
+    sendToParent() {
+      this.$emit("data", "Mahmut Tuncer");
+    },
+  },
 };
 </script>
 
