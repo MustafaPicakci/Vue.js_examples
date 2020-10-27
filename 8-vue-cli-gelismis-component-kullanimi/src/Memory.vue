@@ -4,7 +4,13 @@
       <slot name="heading"></slot>
     </div>
     <div class="memory">
-      <slot name="content"></slot>
+      <slot></slot>
+    </div>
+    <div class="memory">
+      <slot name="author">
+        <h3>author</h3>
+        <p>buraya herhangi bir içerik gelmemiş</p>
+      </slot>
     </div>
   </div>
 </template>

@@ -4,7 +4,7 @@
       <div class="col-md-6 mx-auto">
         <appMemory>
           <h1 slot="heading">Güzel bir gün...</h1>
-          <p slot="content">bu çok güzel bir anıydı.</p>
+          <p>bu çok güzel bir anıydı.</p>
         </appMemory>
       </div>
     </div>
