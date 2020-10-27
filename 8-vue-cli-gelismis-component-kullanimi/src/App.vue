@@ -26,10 +26,13 @@
         <hr />
         <br />
 
-        <component :is="selectedComponent">
-          <h1 slot="heading">Güzel bir gün...</h1>
-          <p>bu çok güzel bir anıydı.</p>
-        </component>
+        
+        <keep-alive>
+          <component :is="selectedComponent">
+            <h1 slot="heading">Güzel bir gün...</h1>
+            <p>bu çok güzel bir anıydı.</p>
+          </component>
+        </keep-alive>
 
         <!-- <appMemory>
           <h1 slot="heading">Güzel bir gün...</h1>
