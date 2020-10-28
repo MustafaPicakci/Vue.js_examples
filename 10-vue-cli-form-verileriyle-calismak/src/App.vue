@@ -18,7 +18,8 @@
                       type="text"
                       id="username"
                       class="form-control"
-                      v-model="userData.userName"
+                     :value="userData.userName"
+                     @input="userData.userName=$event.target.value"
                     />
                   </div>
                   <div class="form-group">
