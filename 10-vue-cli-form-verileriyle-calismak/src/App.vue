@@ -117,14 +117,16 @@
               <hr />
               <div class="row">
                 <div class="col-md-12">
-                  <button class="btn btn-primary">Gönder!</button>
+                  <button @click.prevent="submit" class="btn btn-primary">
+                    Gönder!
+                  </button>
                 </div>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div v-if="isSubmitted" class="col-md-6">
         <div class="panel panel-info">
           <div class="panel-heading">
             <h4>Form Verileri</h4>
@@ -141,7 +143,7 @@
             </ul>
             <p>Cinsiyet: {{ userData.gender }}</p>
             <p>Şehir: {{ userData.selectedCity }}</p>
-            <p>Toggle: {{switched}}</p>
+            <p>Toggle: {{ switched }}</p>
           </div>
         </div>
       </div>
@@ -175,8 +177,14 @@ export default {
         ],
         selectedCity: "",
       },
-      switched:true
+      switched: true,
+      isSubmitted: false,
     };
+  },
+  methods: {
+    submit() {
+      this.isSubmitted = true;
+    },
   },
 };
 </script>
