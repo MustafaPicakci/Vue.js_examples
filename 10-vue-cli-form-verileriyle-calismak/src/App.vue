@@ -56,25 +56,54 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>
-                      <input v-model="userData.interests" type="checkbox" value="yazilim" /> Yazılım
+                      <input
+                        v-model="userData.interests"
+                        type="checkbox"
+                        value="yazilim"
+                      />
+                      Yazılım
                     </label>
                     <label>
-                      <input v-model="userData.interests" type="checkbox" value="donanim" /> Donanım
+                      <input
+                        v-model="userData.interests"
+                        type="checkbox"
+                        value="donanim"
+                      />
+                      Donanım
                     </label>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12 form-group">
-                  <label> <input v-model="userData.gender" type="radio" value="erkek" /> Erkek </label>
-                  <label> <input v-model="userData.gender" type="radio" value="kadin" /> Kadın </label>
+                  <label>
+                    <input
+                      v-model="userData.gender"
+                      type="radio"
+                      value="erkek"
+                    />
+                    Erkek
+                  </label>
+                  <label>
+                    <input
+                      v-model="userData.gender"
+                      type="radio"
+                      value="kadin"
+                    />
+                    Kadın
+                  </label>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12 from-group">
                   <label>Şehir</label>
-                  <select class="form-control">
-                    <option></option>
+                  <select v-model="userData.selectedCity" class="form-control">
+                    <option
+                      :selected="city == 'Adana'"
+                      v-for="city in userData.cities"
+                      :key="city"
+                      >{{ city }}</option
+                    >
                   </select>
                 </div>
               </div>
@@ -98,13 +127,13 @@
             <p>Şifre: {{ userData.password }}</p>
             <p>Yaş: {{ userData.age }}</p>
             <!--white-space:pre;  multiline olarak gösterbilmek için -->
-            <p style="white-space: pre;">Açıklama: {{userData.message}}</p>
+            <p style="white-space: pre;">Açıklama: {{ userData.message }}</p>
             <p><strong>İlgi Alanları</strong></p>
             <ul>
-              <li v-for="item in userData.interests" :key="item">{{item}}</li>
+              <li v-for="item in userData.interests" :key="item">{{ item }}</li>
             </ul>
-            <p>Cinsiyet: {{userData.gender}}</p>
-            <p>Şehir:</p>
+            <p>Cinsiyet: {{ userData.gender }}</p>
+            <p>Şehir: {{userData.selectedCity}}</p>
             <p>Toggle:</p>
           </div>
         </div>
@@ -122,8 +151,18 @@ export default {
         password: "",
         age: null,
         message: "",
-        interests:[],
-        gender:''
+        interests: [],
+        gender: "",
+        cities: [
+          "İstanbul",
+          "Ankara",
+          "Adana",
+          "İzmir",
+          "Bursa",
+          "Konya",
+          "Trabzon",
+        ],
+        selectedCity: ""
       },
     };
   },
