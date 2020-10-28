@@ -48,6 +48,7 @@
                     id="message"
                     rows="3"
                     class="form-control"
+                    v-model="userData.message"
                   ></textarea>
                 </div>
               </div>
@@ -55,10 +56,10 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>
-                      <input type="checkbox" value="yazilim" /> Yazılım
+                      <input v-model="userData.interests" type="checkbox" value="yazilim" /> Yazılım
                     </label>
                     <label>
-                      <input type="checkbox" value="donanim" /> Donanım
+                      <input v-model="userData.interests" type="checkbox" value="donanim" /> Donanım
                     </label>
                   </div>
                 </div>
@@ -95,11 +96,12 @@
           <div class="panel-body">
             <p>Kullanıcı Adı: {{ userData.userName }}</p>
             <p>Şifre: {{ userData.password }}</p>
-            <p>Yaş: {{userData.age }}</p>
-            <p>Açıklama:</p>
+            <p>Yaş: {{ userData.age }}</p>
+            <!--white-space:pre;  multiline olarak gösterbilmek için -->
+            <p style="white-space: pre;">Açıklama: {{userData.message}}</p>
             <p><strong>İlgi Alanları</strong></p>
             <ul>
-              <li></li>
+              <li v-for="item in userData.interests" :key="item">{{item}}</li>
             </ul>
             <p>Cinsiyet:</p>
             <p>Şehir:</p>
@@ -119,6 +121,8 @@ export default {
         userName: "",
         password: "",
         age: null,
+        message: "",
+        interests:[]
       },
     };
   },
