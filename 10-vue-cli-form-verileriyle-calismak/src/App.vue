@@ -27,7 +27,7 @@
                       type="password"
                       id="password"
                       class="form-control"
-                      v-model="userData.password"
+                      v-model.lazy.trim="userData.password"
                     />
                   </div>
                   <div class="form-group">
@@ -36,7 +36,7 @@
                       type="number"
                       id="age"
                       class="form-control"
-                      v-model="userData.age"
+                      v-model.number.trim="userData.age"
                     />
                   </div>
                 </div>
