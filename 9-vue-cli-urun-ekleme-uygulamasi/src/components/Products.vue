@@ -1,6 +1,6 @@
 <template>
   <div class="row product-container">
-    <appProduct>
+    <appProduct v-for="product in productList" :key="product">
       <img
         class="card-img-top"
         src="/src/assets/default.png"
@@ -22,6 +22,11 @@
 import Product from "./Product";
 
 export default {
+  data() {
+    return {
+      productList: []
+    };
+  },
   components: {
     appProduct: Product,
   },

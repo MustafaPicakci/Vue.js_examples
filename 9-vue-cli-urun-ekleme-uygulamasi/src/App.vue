@@ -24,21 +24,14 @@ export default {
   components: {
     appNewProduct: NewProduct,
     appProgress: Progress,
-    appProducts: Products
+    appProducts: Products,
   },
   data() {
     return {
-      ProductList: [],
       product: {
         selectedImage: null,
       },
     };
-  },
-  methods: {
-    onChange(e) {
-      const file = e.target.files[0];
-      this.product.selectedImage = URL.createObjectURL(file);
-    },
   },
 };
 </script>
