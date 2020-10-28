@@ -20,15 +20,21 @@
 
 <script>
 import Product from "./Product";
+import { eventBus } from "../main";
 
 export default {
   data() {
     return {
-      productList: []
+      productList: [],
     };
   },
   components: {
     appProduct: Product,
+  },
+  created() {
+    eventBus.$on("productAdded", (product) => {
+      this.productList.push(product);
+    });
   },
 };
 </script>
