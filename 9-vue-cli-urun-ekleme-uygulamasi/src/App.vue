@@ -9,8 +9,7 @@
     <appProgress></appProgress>
 
     <br /><br />
-    <h3 class="text-center">Eklenen Ürünlerin Listesi</h3>
-    <hr />
+
     <appProducts></appProducts>
   </div>
 </template>

@@ -3,16 +3,31 @@
     <div
       class="progress-bar bg-info"
       role="progressbar"
-      style="width: 0%"
+      :style="{ width: progress + '%' }"
       aria-valuenow="50"
       aria-valuemin="0"
       aria-valuemax="100"
     >
-      0/10
+      {{ currentItem }}/10
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { eventBus } from "../main";
+
+export default {
+  data() {
+    return {
+      currentItem: 0,
+      progress: 0,
+    };
+  },
+  created() {
+    eventBus.$on("progressBarUpdated", (productListCount) => {
+      this.currentItem = productListCount;
+      this.progress = 10 * productListCount;
+    });
+  },
+};
 </script>
