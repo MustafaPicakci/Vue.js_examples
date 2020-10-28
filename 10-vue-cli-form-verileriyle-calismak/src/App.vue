@@ -18,8 +18,8 @@
                       type="text"
                       id="username"
                       class="form-control"
-                     :value="userData.userName"
-                     @input="userData.userName=$event.target.value"
+                      :value="userData.userName"
+                      @input="userData.userName = $event.target.value"
                     />
                   </div>
                   <div class="form-group">
@@ -108,6 +108,12 @@
                   </select>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <appSwitch v-model="switched"></appSwitch>
+                </div>
+              </div>
+
               <hr />
               <div class="row">
                 <div class="col-md-12">
@@ -134,8 +140,8 @@
               <li v-for="item in userData.interests" :key="item">{{ item }}</li>
             </ul>
             <p>Cinsiyet: {{ userData.gender }}</p>
-            <p>Şehir: {{userData.selectedCity}}</p>
-            <p>Toggle:</p>
+            <p>Şehir: {{ userData.selectedCity }}</p>
+            <p>Toggle: {{switched}}</p>
           </div>
         </div>
       </div>
@@ -144,7 +150,11 @@
 </template>
 
 <script>
+import Switch from "./Switch";
 export default {
+  components: {
+    appSwitch: Switch,
+  },
   data() {
     return {
       userData: {
@@ -163,8 +173,9 @@ export default {
           "Konya",
           "Trabzon",
         ],
-        selectedCity: ""
+        selectedCity: "",
       },
+      switched:true
     };
   },
 };
