@@ -18,11 +18,13 @@
 
 <script>
 import FilterList from "./FilterList";
+import { productMixin } from "./productMixin";
 
 export default {
   components: {
     "app-list": FilterList,
   },
+  mixins:[productMixin],
   data() {
     return {
       message: "Selam Bu bir deneme | bunuduzenle.com",
