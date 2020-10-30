@@ -7,7 +7,7 @@
         <p v-html="'<strong>Bu da v-html</strong>'"></p>
       </div>
     </div>
-    <hr>
+    <hr />
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h3>Custom Directive</h3>
@@ -29,7 +29,29 @@
 </template>
 
 <script>
-export default {};
+export default {
+  directives: {
+    color: {
+      bind(el, binding, vnode) {
+        if (binding.modifiers["delay"]) {
+          setTimeout(() => {
+            if (binding.arg == "background") {
+              el.style.backgroundColor = binding.value;
+            } else {
+              el.style.color = binding.value;
+            }
+          }, 3000);
+        } else {
+          if (binding.arg == "background") {
+            el.style.backgroundColor = binding.value;
+          } else {
+            el.style.color = binding.value;
+          }
+        }
+      },
+    },
+  },
+};
 </script>
 
 <style></style>

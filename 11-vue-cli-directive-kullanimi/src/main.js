@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 
-Vue.directive("color", {
+/*Vue.directive("color", {
   bind(el, binding, vnode) {
     if (binding.modifiers["delay"]) {
       setTimeout(() => {
@@ -20,6 +20,7 @@ Vue.directive("color", {
     }
   },
 });
+*/
 
 new Vue({
   el: "#app",
