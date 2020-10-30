@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h3>Custom Directive</h3>
-        <p v-color:background.delay="'lightblue'">
+        <p v-color:background.delay.flash="'lightblue'">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
           aspernatur beatae culpa doloribus, ex facilis fugiat, fugit magni
           molestiae mollitia, nesciunt nihil perspiciatis quaerat quam quas
@@ -33,20 +33,38 @@ export default {
   directives: {
     color: {
       bind(el, binding, vnode) {
+        let delay = 0;
+
         if (binding.modifiers["delay"]) {
+          delay = 3000;
+        }
+
+        if (binding.modifiers["flash"]) {
+          let firsColor = binding.value;
+          let secondColor = "#fbbd08";
+          let currentColor = firsColor;
+
+          setTimeout(() => {
+            setInterval(() => {
+              currentColor == secondColor
+                ? (currentColor = firsColor)
+                : (currentColor = secondColor);
+
+              if (binding.arg == "background") {
+                el.style.backgroundColor = currentColor;
+              } else {
+                el.style.color = currentColor;
+              }
+            }, 1000);
+          }, delay);
+        } else {
           setTimeout(() => {
             if (binding.arg == "background") {
               el.style.backgroundColor = binding.value;
             } else {
               el.style.color = binding.value;
             }
-          }, 3000);
-        } else {
-          if (binding.arg == "background") {
-            el.style.backgroundColor = binding.value;
-          } else {
-            el.style.color = binding.value;
-          }
+          }, delay);
         }
       },
     },
