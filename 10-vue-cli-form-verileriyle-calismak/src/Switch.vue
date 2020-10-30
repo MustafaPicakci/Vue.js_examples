@@ -11,14 +11,14 @@
 
 <script>
 export default {
-    //v-model bize value'yu gönderir ve inputu bekler. Bu yüzden gelen valuyu props ile aldık
-    //ve inputu $emit ile gönderiyoruz
-    props:['value'],
-    methods:{
-        switched(isOn){
-            this.$emit("input",isOn);
-        }
-    }
+  //v-model bize value'yu gönderir ve inputu bekler. Bu yüzden gelen valuyu props ile aldık
+  //ve inputu $emit ile gönderiyoruz
+  props: ["value"],
+  methods: {
+    switched(isOn) {
+      this.$emit("input", isOn);
+    },
+  },
 };
 </script>
 
