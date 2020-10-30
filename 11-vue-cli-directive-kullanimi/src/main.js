@@ -3,7 +3,7 @@ import App from './App.vue'
 
 Vue.directive("color", {
   bind(el,binding,vnode){
-    el.style.backgroundColor='red';
+    el.style.backgroundColor=binding.value;
   }
 });
 
