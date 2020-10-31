@@ -14,7 +14,7 @@
           kutuyu göster/gizle
         </button>
         <br /><br />
-        <transition :name="activeEffect">
+        <!--      <transition :name="activeEffect">
           <div class="alert alert-success" v-if="show">
             bu bir alert kutusudur
           </div>
@@ -36,6 +36,19 @@
           appear
         >
           <div class="alert alert-warning" v-if="!show">
+            bu bir alert kutusudur
+          </div>
+        </transition>
+        <hr />
+
+        -->
+
+        <br /><br />
+        <transition name="fade" mode="out-in">
+          <div class="alert alert-success" key="success" v-if="show">
+            bu bir alert kutusudur
+          </div>
+          <div class="alert alert-danger" key="danger" v-else>
             bu bir alert kutusudur
           </div>
         </transition>
@@ -82,7 +95,7 @@ export default {
 }
 .slide-leave-active {
   animation: slide-out 1s ease-out forwards;
-  transition: opacity 3s;
+  transition: opacity 1s;
   opacity: 0;
 }
 
