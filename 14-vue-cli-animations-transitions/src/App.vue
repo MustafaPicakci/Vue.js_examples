@@ -16,8 +16,8 @@
         </transition>
         <hr />
 
-        <transition name="slide" type="animation">
-          <div class="alert alert-warning" v-if="show">
+        <transition name="slide" type="animation" appear>
+          <div class="alert alert-warning" v-if="!show">
             bu bir alert kutusudur
           </div>
         </transition>
