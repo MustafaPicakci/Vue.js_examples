@@ -77,19 +77,39 @@
             bu bir alert kutusudur
           </div>
         </transition>
+
+        <h3>dinamik komponenetler arası geçiş</h3>
+        <hr />
+        <button class="btn btn-danger" @click="activeComponent = 'app-home'">
+          home
+        </button>
+        <button class="btn btn-primary" @click="activeComponent = 'app-post'">
+          post
+        </button>
+        <transition name="fade" mode="out-in">
+          <component :is="activeComponent"></component>
+        </transition>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Post from "./components/Post";
+import Home from "./components/Home";
+
 export default {
+  components: {
+    "app-post": Post,
+    "app-home": Home,
+  },
   data() {
     return {
       show: false,
       showJs: false,
       activeEffect: "fade",
       elementWidth: 100,
+      activeComponent: "app-post",
     };
   },
   methods: {
