@@ -5,7 +5,7 @@
         <h3>Animation ve Transition</h3>
         <hr />
 
-        <select class="form-control" v-model="activeEffect">
+        <!-- <select class="form-control" v-model="activeEffect">
           <option value="fade">fade</option>
           <option value="slide">slide</option>
         </select>
@@ -14,7 +14,7 @@
           kutuyu göster/gizle
         </button>
         <br /><br />
-        <!--      <transition :name="activeEffect">
+              <transition :name="activeEffect">
           <div class="alert alert-success" v-if="show">
             bu bir alert kutusudur
           </div>
@@ -41,14 +41,39 @@
         </transition>
         <hr />
 
-        -->
-
         <br /><br />
         <transition name="fade" mode="out-in">
           <div class="alert alert-success" key="success" v-if="show">
             bu bir alert kutusudur
           </div>
           <div class="alert alert-danger" key="danger" v-else>
+            bu bir alert kutusudur
+          </div>
+        </transition>
+        -->
+
+        <button class="btn btn-primary" @click="showJs = !showJs">
+          kutuyu göster/gizle
+        </button>
+        <hr />
+
+        <!--:css="false" kullanmazsak default oalrak css classlarını arar (v-enter gibi) -->
+        <transition
+          :css="false"
+          @before-enter="beforeEnter"
+          @enter="enter"
+          @after-enter="afterEnter"
+          @after-enter-cancelled="afterEnterCancelled"
+          @before-leave="beforeLeave"
+          @leave="leave"
+          @after-leave="afterLeave"
+          @after-leave-cancelled="afterLeaveCancelled"
+        >
+          <div
+            style="width:100px; height:100px; background-color:#fbbd08; border: 1px solid #666;"
+            key="success"
+            v-if="showJs"
+          >
             bu bir alert kutusudur
           </div>
         </transition>
@@ -62,8 +87,59 @@ export default {
   data() {
     return {
       show: false,
+      showJs: false,
       activeEffect: "fade",
+      elementWidth: 100,
     };
+  },
+  methods: {
+    beforeEnter(el) {
+      console.log("beforeEnter");
+      this.elementWidth = 100;
+      el.style.width = this.elementWidth + "px";
+    },
+    enter(el, done) {
+      console.log("enter");
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.width = this.elementWidth + round * 10 + "px";
+        round++;
+        if (round == 20) {
+          clearInterval(interval);
+          done();
+        }
+      }, 50);
+    },
+    afterEnter(el) {
+      console.log("afterEnter");
+    },
+    afterEnterCancelled(el) {
+      console.log("afterEnterCancelled");
+    },
+    beforeLeave(el) {
+      console.log("beforeLeave");
+      this.elementWidth = 300;
+      el.style.width = this.elementWidth + "px";
+    },
+    leave(el, done) {
+      console.log("leave");
+
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.width = this.elementWidth - round * 10 + "px";
+        round++;
+        if (round == 20) {
+          clearInterval(interval);
+          done();
+        }
+      }, 50);
+    },
+    afterLeave(el) {
+      console.log("afterLeave");
+    },
+    afterLeaveCancelled(el) {
+      console.log("afterLeaveCancelled");
+    },
   },
 };
 </script>
