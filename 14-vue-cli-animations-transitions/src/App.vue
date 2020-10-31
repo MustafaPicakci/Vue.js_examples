@@ -5,11 +5,16 @@
         <h3>Animation ve Transition</h3>
         <hr />
 
+        <select class="form-control" v-model="activeEffect">
+          <option value="fade">fade</option>
+          <option value="slide">slide</option>
+        </select>
+
         <button class="btn btn-primary" @click="show = !show">
           kutuyu göster/gizle
         </button>
         <br /><br />
-        <transition name="fade">
+        <transition :name="activeEffect">
           <div class="alert alert-success" v-if="show">
             bu bir alert kutusudur
           </div>
@@ -22,7 +27,7 @@
           </div>
         </transition>
         <hr />
-        <hr>
+        <hr />
         <transition
           enter-class=""
           enter-active-class="animate__animated animate__bounce"
@@ -44,6 +49,7 @@ export default {
   data() {
     return {
       show: false,
+      activeEffect: "fade",
     };
   },
 };
