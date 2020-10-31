@@ -89,6 +89,24 @@
         <transition name="fade" mode="out-in">
           <component :is="activeComponent"></component>
         </transition>
+        <hr />
+        <br /><br />
+
+        <button class="btn btn-danger" @click="addNewItem">
+          yeni eleman ekle
+        </button>
+        <ul class="list-group">
+          <transition-group name="slide">
+            <li
+              v-for="(number, index) in numberList"
+              :key="number"
+              @click="removeItem(index)"
+              class="list-group-item"
+            >
+              Number : {{ number }}
+            </li>
+          </transition-group>
+        </ul>
       </div>
     </div>
   </div>
@@ -110,9 +128,17 @@ export default {
       activeEffect: "fade",
       elementWidth: 100,
       activeComponent: "app-post",
+      numberList: [1, 2, 3, 4, 5],
     };
   },
   methods: {
+    addNewItem() {
+      const position = Math.floor(Math.random() * this.numberList.length);
+      this.numberList.splice(position, 0, this.numberList.length + 1);
+    },
+    removeItem(index) {
+      this.numberList.splice(index, 1);
+    },
     beforeEnter(el) {
       console.log("beforeEnter");
       this.elementWidth = 100;
@@ -193,6 +219,10 @@ export default {
   animation: slide-out 1s ease-out forwards;
   transition: opacity 1s;
   opacity: 0;
+  position: absolute;
+}
+.slide-move {
+  transition: transform 1s;
 }
 
 @keyframes slide-in {
