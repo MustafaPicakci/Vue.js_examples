@@ -21,6 +21,19 @@
             bu bir alert kutusudur
           </div>
         </transition>
+        <hr />
+        <hr>
+        <transition
+          enter-class=""
+          enter-active-class="animate__animated animate__bounce"
+          leave-class=""
+          leave-active-class="animate__animated animate__swing"
+          appear
+        >
+          <div class="alert alert-warning" v-if="!show">
+            bu bir alert kutusudur
+          </div>
+        </transition>
       </div>
     </div>
   </div>
