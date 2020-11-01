@@ -1,5 +1,7 @@
 <template>
-  <component :is="activeComponent"></component>
+  <component 
+  @isCorrectEvent="activeComponent=$event"
+  :is="activeComponent"></component>
 </template>
 <script>
 import GameCards from "./components/GameCards";

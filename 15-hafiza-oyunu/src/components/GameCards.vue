@@ -62,9 +62,9 @@ export default {
 
         setTimeout(() => {
           if (answer.id == this.selectedCard) {
-            alert("doğru");
+            this.$emit("isCorrectEvent", "app-celebrate");
           } else {
-            alert("yanlış");
+            this.$emit("isCorrectEvent", "app-failure");
           }
         }, 1000);
       }
