@@ -55,7 +55,19 @@ export default {
   },
   methods: {
     showCard(answer) {
-      this.activeCard = answer.component;
+      if (this.selectedCard == null) {
+        alert("bir kart seçmelisiniz");
+      } else {
+        this.activeCard = answer.component;
+
+        setTimeout(() => {
+          if (answer.id == this.selectedCard) {
+            alert("doğru");
+          } else {
+            alert("yanlış");
+          }
+        }, 1000);
+      }
     },
   },
 };
@@ -114,12 +126,12 @@ export default {
 .rotate-enter {
 }
 .rotate-enter-active {
-  animation: rotate-in 1s ease-in-out forwards;
+  animation: rotate-in 0.5s ease-in-out forwards;
 }
 .rotate-leave {
 }
 .rotate-leave-active {
-  animation: rotate-out 1s ease-in-out forwards;
+  animation: rotate-out 0.5s ease-in-out forwards;
 }
 
 @keyframes rotate-in {
