@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       selectedCard: null,
+      answer: {},
       cards: [
         { id: 1, component: "app-cards", image: "/src/assets/card-1.jpg" },
         { id: 2, component: "app-cards", image: "/src/assets/card-2.jpg" },
@@ -38,6 +39,10 @@ export default {
         { id: 5, component: "app-cards", image: "/src/assets/card-5.jpg" },
       ],
     };
+  },
+  created() {
+    let answer = Math.ceil(Math.random() * this.cards.length);
+    this.cards[answer - 1];
   },
 };
 </script>
