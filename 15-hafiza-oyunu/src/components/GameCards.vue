@@ -5,13 +5,15 @@
       Açık kartlardan birini seçtikten sonra kapalı karta tıklayınız
     </h4>
     <div class="container">
-      <app-card
-        :class="{ shadow: selectedCard == card.id }"
-        @click.native="selectedCard = card.id"
-        v-for="card in cards"
-        :card="card"
-        :key="card"
-      ></app-card>
+      <transition-group name="rotate-all" appear class="card-container">
+        <app-card
+          :class="{ shadow: selectedCard == card.id }"
+          @click.native="selectedCard = card.id"
+          v-for="card in cards"
+          :card="card"
+          :key="card.id"
+        ></app-card>
+      </transition-group>
     </div>
     <div class="container">
       <app-default-card></app-default-card>
@@ -62,7 +64,8 @@ export default {
   color: grey;
   text-align: center;
 }
-.container {
+.container,
+.card-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,5 +74,26 @@ export default {
 .shadow {
   box-shadow: 0px 5px 48px #30969f !important;
   transition: box-shadow 0.5s;
+}
+
+/*********** Açık kartların animasyonları için gerekli olan class tanımlamaları  **************/
+
+.rotate-all-enter {
+}
+.rotate-all-enter-active {
+  animation: rotate-all ease-in-out 2s forwards;
+}
+.rotate-all-leave {
+}
+.rotate-all-leave-active {
+}
+
+@keyframes rotate-all {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(1080deg);
+  }
 }
 </style>
