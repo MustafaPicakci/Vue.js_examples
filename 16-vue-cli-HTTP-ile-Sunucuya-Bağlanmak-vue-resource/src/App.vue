@@ -13,7 +13,10 @@
         <hr />
         <ul class="list-group">
           <li class="list-group-item" v-for="user in userList" :key="user">
-            {{ user.userName }}
+            <span> {{ user.data.userName }}</span>
+            <button class="btn btn-danger" @click="deleteUser(user.key)">
+              sil
+            </button>
           </li>
         </ul>
       </div>
@@ -32,7 +35,7 @@ export default {
   methods: {
     saveUser() {
       this.$http
-        .post("", {
+        .post("users.json", {
           userName: this.userName,
         })
         .then((response) => {
@@ -41,15 +44,23 @@ export default {
     },
     getUsers() {
       this.$http
-        .get()
+        .get("users.json")
         .then((response) => {
           return response.json();
         })
         .then((data) => {
           for (let key in data.userList) {
-            this.userList.push(data.userList[key]);
+            this.userList.push({
+              key: key,
+              data: data.userList[key],
+            });
           }
         });
+    },
+    deleteUser(userKey) {
+      this.$http.delete("users/" + userKey + ".json").then((response) => {
+        console.log(response);
+      });
     },
   },
 };
