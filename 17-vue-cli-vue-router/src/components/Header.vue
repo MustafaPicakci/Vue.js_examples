@@ -4,11 +4,8 @@
     <router-link exact active-class="active" to="/" tag="li"
       ><a>Home</a></router-link
     >
-    <router-link active-class="active" to="/user/1" tag="li"
-      ><a>User1</a></router-link
-    >
-    <router-link active-class="active" to="/user/2" tag="li"
-      ><a>User2</a></router-link
+    <router-link active-class="active" to="/user" tag="li"
+      ><a>User</a></router-link
     >
   </ul>
 </template>
