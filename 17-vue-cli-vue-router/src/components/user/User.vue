@@ -30,5 +30,10 @@ export default {
       //yukardakilerin hepsi aynı işlemi gerçekleştirir
     },
   },
+  watch: {
+    $route(to, from) {
+      this.id = to.params.id;
+    },
+  },
 };
 </script>
