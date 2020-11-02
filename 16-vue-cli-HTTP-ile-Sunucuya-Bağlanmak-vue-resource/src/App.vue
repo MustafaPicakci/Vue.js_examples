@@ -30,6 +30,7 @@ export default {
     return {
       userName: "null",
       userList: [],
+      resource: {},
     };
   },
   methods: {
@@ -42,7 +43,9 @@ export default {
           console.log(response);
         });
         */
-      this.$resource("users.json").save({}, { userName: this.userName });
+      //   this.$resource("users.json").save({}, { userName: this.userName });
+
+      this.resource.kaydet({}, { userName: this.userName });
     },
     getUsers() {
       this.$resource("users.json")
@@ -64,6 +67,12 @@ export default {
         console.log(response);
       });
     },
+  },
+  created() {
+    const customActions = {
+      kaydet: { method: "POST", url: "users.json" },
+    };
+    this.resource = this.$resource("users.json ", {}, customActions);
   },
 };
 </script>
