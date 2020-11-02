@@ -12,7 +12,7 @@
         </button>
         <hr />
         <ul class="list-group">
-          <li class="list-group-item" v-for="user in userList" :key="user">
+          <li class="list-group-item" v-for="user in userList" :key="user.key">
             <span> {{ user.data.userName }}</span>
             <button class="btn btn-danger" @click="deleteUser(user.key)">
               sil
@@ -34,17 +34,19 @@ export default {
   },
   methods: {
     saveUser() {
-      this.$http
+      /* this.$http
         .post("users.json", {
           userName: this.userName,
         })
         .then((response) => {
           console.log(response);
         });
+        */
+      this.$resource("users.json").save({}, { userName: this.userName });
     },
     getUsers() {
-      this.$http
-        .get("users.json")
+      this.$resource("users.json")
+        .get()
         .then((response) => {
           return response.json();
         })
