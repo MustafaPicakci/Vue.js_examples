@@ -1,10 +1,16 @@
 <template>
   <div class="container">
     <h3>User Detail Component</h3>
-    <hr>
-<p>Kullanıcının id bilgisi : {{$route.params.id}} </p>
+    <hr />
+    <p>Kullanıcının id bilgisi : {{ $route.params.id }}</p>
+    <router-link
+      :to="'/user/' + $route.params.id + '/edit'"
+      class="btn btn-primary"
+      tag="tag"
+      >Kullanıcıyı düzenle</router-link
+    >
   </div>
 </template>
 <script>
-  export default {}
+export default {};
 </script>
