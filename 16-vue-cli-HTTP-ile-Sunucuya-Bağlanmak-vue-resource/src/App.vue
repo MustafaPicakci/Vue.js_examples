@@ -40,13 +40,16 @@ export default {
         });
     },
     getUsers() {
-      this.$http.get().then((response) => {
-        let data = response.data;
-
-        for (let key in data) {
-          this.userList.push(data[key]);
-        }
-      });
+      this.$http
+        .get()
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          for (let key in data.userList) {
+            this.userList.push(data.userList[key]);
+          }
+        });
     },
   },
 };
