@@ -32,7 +32,7 @@ export default {
   methods: {
     saveUser() {
       this.$http
-        .post("https://vuejs-vue-resource-a01ae.firebaseio.com/users.json", {
+        .post("", {
           userName: this.userName,
         })
         .then((response) => {
@@ -40,15 +40,13 @@ export default {
         });
     },
     getUsers() {
-      this.$http
-        .get("https://vuejs-vue-resource-a01ae.firebaseio.com/users.json")
-        .then((response) => {
-          let data = response.data;
+      this.$http.get().then((response) => {
+        let data = response.data;
 
-          for (let key in data) {
-            this.userList.push(data[key]);
-          }
-        });
+        for (let key in data) {
+          this.userList.push(data[key]);
+        }
+      });
     },
   },
 };
