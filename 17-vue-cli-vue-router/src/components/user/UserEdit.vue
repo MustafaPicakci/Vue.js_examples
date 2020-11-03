@@ -1,14 +1,11 @@
 <template>
   <div class="container">
     <h3>User Edit Component</h3>
-    <hr>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, earum libero odit optio repellendus sed
-      soluta? Animi, atque blanditiis commodi consequatur distinctio dolorem eaque eos expedita, modi reprehenderit
-      repudiandae soluta.
-    </p>
+    <hr />
+    <p>ad : {{ $route.query.name }}</p>
+    <p>soyad : {{ $route.query.lastName }}</p>
   </div>
 </template>
 <script>
-  export default {}
+export default {};
 </script>

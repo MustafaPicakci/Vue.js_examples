@@ -4,7 +4,11 @@
     <hr />
     <p>Kullanıcının id bilgisi : {{ $route.params.id }}</p>
     <router-link
-      :to="{ name: 'userEdit', params: { id: $route.params.id } }"
+      :to="{
+        name: 'userEdit',
+        params: { id: $route.params.id },
+        query: { name: 'Mustafa', lastName: 'Pıçakçı' },
+      }"
       class="btn btn-primary"
       tag="tag"
       >Kullanıcıyı düzenle</router-link
