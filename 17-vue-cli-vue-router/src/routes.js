@@ -3,12 +3,23 @@ import User from "./components/user/User";
 import UserStart from "./components/user/UserStart";
 import UserEdit from "./components/user/UserEdit";
 import UserDetail from "./components/user/UserDetail";
+import Header from "./components/Header";
 
 export const routes = [
-  { path: "/", component: Home, name: "anasayfa" },
+  {
+    path: "/",
+    name: "anasayfa",
+    components: {
+      default: Home,
+      "header-top": Header,
+    },
+  },
   {
     path: "/user",
-    component: User,
+    components: {
+      default: User,
+      "header-bottom": Header,
+    },
     name: "kullanici",
     children: [
       { path: "/", component: UserStart }, //       user

@@ -5,6 +5,7 @@
     <button class="btn btn-success" @click="navigateToHome">
       Home component
     </button>
+    <hr />
   </div>
 </template>
 <script>
