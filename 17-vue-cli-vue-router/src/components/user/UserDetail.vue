@@ -20,5 +20,9 @@ export default {
       },
     };
   },
+  beforeRouteEnter(to, from, next) {
+    console.log("component seviyesinde kontrol!!!");
+    next();
+  },
 };
 </script>

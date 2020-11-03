@@ -23,7 +23,14 @@ export const routes = [
     name: "kullanici",
     children: [
       { path: "/", component: UserStart }, //       user
-      { path: ":id", component: UserDetail }, //    user:10
+      {
+        path: ":id",
+        component: UserDetail,
+        beforeEnter: (to, from, next) => {
+          console.log("route seviyesinde kontrol!!");
+          next();
+        },
+      }, //    user:10
       { path: ":id/edit", component: UserEdit, name: "userEdit" }, // user:/10/edit
     ],
   },

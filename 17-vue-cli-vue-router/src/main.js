@@ -16,6 +16,11 @@ const router = new VueRouter({
   },
 });
 
+router.beforeEach((to, from, next) => {
+  console.log("global olarak kontrol !!");
+  next(); //bu fonksiyon olmazsa componenetin load edilmesi engellenir
+});
+
 new Vue({
   el: "#app",
   router: router,
