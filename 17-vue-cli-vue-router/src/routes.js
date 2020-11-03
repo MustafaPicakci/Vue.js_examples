@@ -27,4 +27,8 @@ export const routes = [
       { path: ":id/edit", component: UserEdit, name: "userEdit" }, // user:/10/edit
     ],
   },
+  {
+    path: "/redirect",
+    redirect: { name: "anasayfa" },
+  },
 ];
