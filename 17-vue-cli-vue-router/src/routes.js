@@ -31,4 +31,8 @@ export const routes = [
     path: "/redirect",
     redirect: { name: "anasayfa" },
   },
+  {
+    path: "*", //hiçbirine uymayan bir istek gelirse /'ya yönlendirme işlemi
+    redirect: "/",
+  },
 ];
