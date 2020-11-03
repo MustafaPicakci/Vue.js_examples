@@ -4,6 +4,8 @@
     <hr />
     <p>ad : {{ $route.query.name }}</p>
     <p>soyad : {{ $route.query.lastName }}</p>
+    <div style="height:800px"></div>
+    <p id="data">bazı bilgiler...</p>
   </div>
 </template>
 <script>
