@@ -1,7 +1,7 @@
 <template>
   <div>
     <app-header></app-header>
-    <app-container></app-container>
+    <router-view></router-view>
     <app-footer></app-footer>
   </div>
 </template>
@@ -16,9 +16,7 @@ export default {
   components: {
     appHeader: Header,
     appFooter: Footer,
-    appContainer: ProductList,
-
-  },
+  }
 };
 </script>
 <style></style>
