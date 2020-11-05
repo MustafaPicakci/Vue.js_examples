@@ -1,7 +1,7 @@
 <template>
   <div>
-    <p class="counter-container">Sayaç : {{ getDoubleCounter }}</p>
-    <p class="counter-container">Tıklama sayısı : {{ stringCounter }}</p>
+    <p class="counter-container">Sayaç : {{ double }}</p>
+    <p class="counter-container">Tıklama sayısı : {{ stringC }}</p>
   </div>
 </template>
 <script>

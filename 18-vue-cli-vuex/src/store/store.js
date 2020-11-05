@@ -15,4 +15,9 @@ export const store = new Vuex.Store({
       return state.counter + " . kez tıklandı.";
     },
   },
+  mutations: {
+    updateCounter(state, value) {
+      state.counter += value;
+    },
+  },
 });
