@@ -1,9 +1,11 @@
 <template>
   <div>
-    <button class="btn btn-success" @click="increaseCounter">+ Arttır</button>
+    <button class="btn btn-success" @click="increaseCounter(4)">
+      + Arttır
+    </button>
     <button class="btn btn-danger" @click="decreaseCounter">- Azalt</button>
     <hr />
-    <button class="btn btn-success" @click="increment">+ Arttır</button>
+    <button class="btn btn-success" @click="increment(5)">+ Arttır</button>
     <button class="btn btn-danger" @click="decrement">- Azalt</button>
     <hr />
     <button class="btn btn-success" @click="incAsync({ time: 2000 })">
