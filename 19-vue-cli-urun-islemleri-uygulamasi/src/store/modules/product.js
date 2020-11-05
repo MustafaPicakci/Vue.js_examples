@@ -18,10 +18,13 @@ const actions = {
   initApp({ commit }) {
     //vueResource işlemleri
   },
-  saveProduct({ commit }, payload) {
+  saveProduct({ commit,state }, product) {
     //templatenin içinde olmadığımız için bu şekilde kullanmadık : '$http'
-    Vue.http.post("https://urun-islemleri-3f110.firebaseio.com/products.json",payload).then((response)=>{
-    console.log(response)
+    Vue.http.post("https://urun-islemleri-3f110.firebaseio.com/products.json",product)
+    .then((response)=>{
+      product.key=response.body.name;
+      commit("updateProductList",product)
+      console.log(state.product)
     })
   },
   SellProduct({ commit }, payload) {
