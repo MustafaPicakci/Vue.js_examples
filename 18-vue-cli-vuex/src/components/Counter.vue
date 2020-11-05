@@ -2,6 +2,13 @@
   <div>
     <button class="btn btn-success" @click="increaseCounter">+ Arttır</button>
     <button class="btn btn-danger" @click="decreaseCounter">- Azalt</button>
+    <hr />
+    <button class="btn btn-success" @click="increment">+ Arttır</button>
+    <button class="btn btn-danger" @click="decrement">- Azalt</button>
+    <hr />
+    <button class="btn btn-success" @click="incrementAsync">
+      + Async Arttır
+    </button>
   </div>
 </template>
 
@@ -20,6 +27,15 @@ export default {
       //this.$store.state.counter--;
       this.$store.commit("decreaseCounter");
     }*/
+    increment() {
+      this.$store.dispatch("increment"); //actions'ı çağırdık
+    },
+    decrement() {
+      this.$store.dispatch("decrement"); //actions'ı çağırdık
+    },
+    incrementAsync() {
+      this.$store.dispatch("incAsync");
+    },
   },
 };
 </script>
