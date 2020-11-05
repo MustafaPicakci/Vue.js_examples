@@ -11,5 +11,8 @@ export const store = new Vuex.Store({
     getDoubleCounter(state) {
       return state.counter * 2;
     },
+    stringCounter(state) {
+      return state.counter + " . kez tıklandı.";
+    },
   },
 });

@@ -1,17 +1,19 @@
 <template>
   <div>
-    <p class="counter-container">Sayaç : {{ counter }}</p>
+    <p class="counter-container">Sayaç : {{ getDoubleCounter }}</p>
+    <p class="counter-container">Tıklama sayısı : {{ stringCounter }}</p>
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   // props: ["counter"],
-  computed: {
-    counter() {
-      // return this.$store.state.counter;
-      return this.$store.getters.getDoubleCounter;
-    },
-  },
+  computed: mapGetters(["getDoubleCounter", "stringCounter"]), //computed içindeki değişken isimlerini farklı isimlerle değiştirip kullanmak istersek
+  //mapGetters'ın dizi değil obje parameter almasını sağlıyoruz.(aşağıdaki gibi)
+  /*computed: mapGetters({
+    double: "getDoubleCounter",
+    stringC: "stringCounter",
+  }),*/
 };
 </script>
 <style scoped>
