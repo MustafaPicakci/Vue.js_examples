@@ -6,14 +6,14 @@
     <button class="btn btn-success" @click="increment">+ Arttır</button>
     <button class="btn btn-danger" @click="decrement">- Azalt</button>
     <hr />
-    <button class="btn btn-success" @click="incrementAsync">
+    <button class="btn btn-success" @click="incAsync">
       + Async Arttır
     </button>
   </div>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapActions } from "vuex";
 export default {
   methods: {
     ...mapMutations(["increaseCounter", "decreaseCounter"]),
@@ -27,7 +27,7 @@ export default {
       //this.$store.state.counter--;
       this.$store.commit("decreaseCounter");
     }*/
-    increment() {
+    /* increment() {
       this.$store.dispatch("increment"); //actions'ı çağırdık
     },
     decrement() {
@@ -35,7 +35,8 @@ export default {
     },
     incrementAsync() {
       this.$store.dispatch("incAsync");
-    },
+    },*/
+    ...mapActions(["increment", "decrement", "incAsync"]),
   },
 };
 </script>
