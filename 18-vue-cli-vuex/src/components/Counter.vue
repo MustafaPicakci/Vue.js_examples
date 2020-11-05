@@ -6,7 +6,7 @@
     <button class="btn btn-success" @click="increment">+ Arttır</button>
     <button class="btn btn-danger" @click="decrement">- Azalt</button>
     <hr />
-    <button class="btn btn-success" @click="incAsync">
+    <button class="btn btn-success" @click="incAsync({ time: 2000 })">
       + Async Arttır
     </button>
   </div>
