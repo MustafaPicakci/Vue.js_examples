@@ -2,6 +2,8 @@
   <div>
     <p class="counter-container">Sayaç : {{ double }}</p>
     <p class="counter-container">Tıklama sayısı : {{ stringC }}</p>
+    <input type="text" v-model="value" />
+    <p>{{ value }}</p>
   </div>
 </template>
 <script>
@@ -23,8 +25,14 @@ export default {
       double: "getDoubleCounter",
       stringC: "stringCounter",
     }),
-    custemProp() {
-      //kendi comp. prop. de ekleyebildik
+    //bu computed propertieslerin farklı bir kulanımı. value'yu methods yerine object olarak tanımladık ve get,set islemlerini ayırabildik.
+    value: {
+      get() {
+        return this.$store.getters.getValue;
+      },
+      set(value) {
+        this.$store.dispatch("setValueData", value);
+      },
     },
   },
 };

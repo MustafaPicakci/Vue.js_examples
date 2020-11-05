@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     counter: 0,
+    value: 0,
   },
   getters: {
     getDoubleCounter(state) {
@@ -14,6 +15,9 @@ export const store = new Vuex.Store({
     stringCounter(state) {
       return state.counter + " . kez tıklandı.";
     },
+    getValue(state) {
+      return state.value;
+    },
   },
   mutations: {
     increaseCounter(state, payload) {
@@ -21,6 +25,9 @@ export const store = new Vuex.Store({
     },
     decreaseCounter(state) {
       state.counter--;
+    },
+    setValue(state, payload) {
+      state.value = payload;
     },
   },
   actions: {
@@ -32,8 +39,11 @@ export const store = new Vuex.Store({
     },
     incAsync({ commit }, payload) {
       setTimeout(() => {
-        commit("increaseCounter",10);
+        commit("increaseCounter", 10);
       }, payload.time);
+    },
+    setValueData({ commit }, payload) {
+      commit("setValue",payload)
     },
   },
 });
