@@ -8,7 +8,7 @@
 import { mapGetters } from "vuex";
 export default {
   // props: ["counter"],
- // computed: mapGetters(["getDoubleCounter", "stringCounter"]), //computed içindeki değişken isimlerini farklı isimlerle değiştirip kullanmak istersek
+  // computed: mapGetters(["getDoubleCounter", "stringCounter"]), //computed içindeki değişken isimlerini farklı isimlerle değiştirip kullanmak istersek
   //mapGetters'ın dizi değil obje parameter almasını sağlıyoruz.(aşağıdaki gibi)
   /*computed: mapGetters({
     double: "getDoubleCounter",
@@ -23,9 +23,9 @@ export default {
       double: "getDoubleCounter",
       stringC: "stringCounter",
     }),
-    custemProp(){
+    custemProp() {
       //kendi comp. prop. de ekleyebildik
-    }
+    },
   },
 };
 </script>
