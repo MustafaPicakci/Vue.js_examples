@@ -1,3 +1,5 @@
+import Vue from "vue"
+
 const state = {
   products: [],
 };
@@ -17,7 +19,10 @@ const actions = {
     //vueResource işlemleri
   },
   saveProduct({ commit }, payload) {
-    //vueResource işlemleri
+    //templatenin içinde olmadığımız için bu şekilde kullanmadık : '$http'
+    Vue.http.post("https://urun-islemleri-3f110.firebaseio.com/products.json",payload).then((response)=>{
+    console.log(response)
+    })
   },
   SellProduct({ commit }, payload) {
     //vueResource işlemleri
