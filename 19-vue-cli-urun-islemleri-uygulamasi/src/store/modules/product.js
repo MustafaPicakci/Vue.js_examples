@@ -18,6 +18,15 @@ const mutations = {
 const actions = {
   initApp({ commit }) {
     //vueResource işlemleri
+    Vue.http
+      .get("https://urun-islemleri-3f110.firebaseio.com/products.json")
+      .then((response) => {
+        let data = response.body;
+        for (let key in data) {
+          data[key].key = key;
+          commit("updateProductList", data[key]);
+        }
+      });
   },
   saveProduct({ dispatch, commit, state }, product) {
     //templatenin içinde olmadığımız için bu şekilde kullanmadık : '$http'

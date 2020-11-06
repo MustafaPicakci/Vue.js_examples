@@ -5,7 +5,10 @@
         <div class="card-body">
           <h3>Ürün Listesi</h3>
           <hr />
-          <table class="table table-hover table-striped table-bordered">
+          <table
+            class="table table-hover table-striped table-bordered"
+            v-if="getProducts.length > 0"
+          >
             <thead>
               <th>id</th>
               <th>Ürün Adı</th>
@@ -16,16 +19,16 @@
             <tbody>
               <tr v-for="product in getProducts" :key="product">
                 <td class="align-middle text-center">
-                  <span class="badge badge-info"> E564fghdE563df </span>
+                  <span class="badge badge-info"> {{ product.key }} </span>
                 </td>
-                <td class="align-middle text-center">Deneme</td>
-                <td class="align-middle text-center">1</td>
-                <td style="width: 120px;">10,000</td>
-                <td class="align-middle">Örnek Açıklama</td>
+                <td class="align-middle text-center">{{ product.title }}</td>
+                <td class="align-middle text-center">{{ product.count }}</td>
+                <td style="width: 120px;">{{ product.price }}</td>
+                <td class="align-middle">{{ product.description }}</td>
               </tr>
             </tbody>
           </table>
-          <div class="alert alert-warning">
+          <div class="alert alert-warning" v-else>
             <strong>Henüz Burada Bir Kayıt Bulamadık</strong>
             <br />
             <small
