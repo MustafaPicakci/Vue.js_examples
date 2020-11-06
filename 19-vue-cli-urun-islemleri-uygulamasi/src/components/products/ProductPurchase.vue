@@ -86,6 +86,22 @@ export default {
       }
     },
   },
+  beforeRouteLeave(to, from, next) {
+    if (
+      this.product.title.length > 0 ||
+      this.product.count > 0 ||
+      this.product.price > 0 ||
+      this.product.description.length > 0
+    ) {
+      if (confirm("kaydedilmemiş değişiklikler var, Çıkmak istiyor musunuz?")) {
+        next();
+      } else {
+        next(false);
+      }
+    } else {
+      next();
+    }
+  },
 };
 </script>
 <style></style>
