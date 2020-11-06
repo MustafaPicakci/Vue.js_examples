@@ -14,7 +14,13 @@ export const setTradeResult = ({ state, commit }, tradeResult) => {
     )
     .then((response) => {
       console.log(response);
-      console.log(state.purchase)
+      console.log(state.purchase);
     });
 };
-export const getTradeResult = ({ commit }) => {};
+export const getTradeResult = ({ commit }) => {
+  Vue.http
+    .get("https://urun-islemleri-3f110.firebaseio.com/trade-result.json")
+    .then((response) => {
+      commit("updateTradeResult", response.body);
+    });
+};
