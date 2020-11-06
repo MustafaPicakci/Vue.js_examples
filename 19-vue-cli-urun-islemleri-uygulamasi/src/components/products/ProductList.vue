@@ -14,7 +14,7 @@
               <th>Açıklama</th>
             </thead>
             <tbody>
-              <tr>
+              <tr v-for="product in getProducts" :key="product">
                 <td class="align-middle text-center">
                   <span class="badge badge-info"> E564fghdE563df </span>
                 </td>
@@ -38,6 +38,11 @@
   </div>
 </template>
 <script>
-export default {};
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters(["getProducts"]),
+  },
+};
 </script>
 <style></style>
