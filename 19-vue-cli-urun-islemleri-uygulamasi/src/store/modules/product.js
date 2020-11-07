@@ -10,10 +10,11 @@ const getters = {
   },
   getProduct(state) {
     //getter'a parametre olarak gönderilen keyi aşağıdaki şekilde almamız gerekiyor
-    //products.filter, products içindeki verileri dönüyor ve bizim gönderdiğimiz key ile eşleşeni return ediyoruz. 
-   return key => state.products.filter((element)=>{ 
-      return element.key==key
-    })
+    //products.filter, products içindeki verileri dönüyor ve bizim gönderdiğimiz key ile eşleşeni return ediyoruz.
+    return (key) =>
+      state.products.filter((element) => {
+        return element.key == key;
+      });
   },
 };
 const mutations = {
@@ -57,8 +58,39 @@ const actions = {
         router.replace("/");
       });
   },
-  SellProduct({ commit }, payload) {
+  sellProduct({ state, commit,dispatch }, payload) {
     //vueResource işlemleri
+    //istediğimiz kaydın countunu güncellemek için patch kullandık
+
+    let product = state.products.filter((element) => {
+      return element.key == payload.key;
+    });
+
+    if (product) {
+      let totalCount = product[0].count - payload.count;
+
+      Vue.http
+        .patch(
+          "https://urun-islemleri-3f110.firebaseio.com/products/" +
+            payload.key +
+            ".json",
+          { count: totalCount }
+        )
+        .then((response) => {
+          product[0].count = totalCount;
+
+
+          
+        let tradeResult = {
+          purchase:0,
+          sale: product[0].price,
+          count: payload.count,
+        };
+
+        dispatch("setTradeResult", tradeResult);
+        router.replace("/");
+        });
+    }
   },
 };
 export default {

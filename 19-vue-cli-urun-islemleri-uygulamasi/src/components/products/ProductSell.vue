@@ -46,13 +46,14 @@
           <div class="form-group">
             <label>Adet</label>
             <input
+              v-model="product_count"
               type="text"
               class="form-control"
               placeholder="Ürün adetini giriniz.."
             />
           </div>
           <hr />
-          <button class="btn btn-primary">Kaydet</button>
+          <button @click="save" class="btn btn-primary">Kaydet</button>
         </div>
       </div>
     </div>
@@ -68,11 +69,19 @@ export default {
     return {
       selectedProduct: null,
       product: null,
+      product_count: null,
     };
   },
   methods: {
     productSelected() {
       this.product = this.$store.getters.getProduct(this.selectedProduct)[0];
+    },
+    save() {
+      let product = {
+        key: this.selectedProduct,
+        count: this.product_count,
+      };
+      this.$store.dispatch("sellProduct", product);
     },
   },
 };
