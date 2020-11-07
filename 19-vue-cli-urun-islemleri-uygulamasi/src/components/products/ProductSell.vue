@@ -1,5 +1,11 @@
 <template>
   <div class="container">
+    <div class="loading" :style="isLoading">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-6 offset-3 pt-3 card mt-5 shadow">
         <div class="card-body">
@@ -53,7 +59,9 @@
             />
           </div>
           <hr />
-          <button @click="save" class="btn btn-primary">Kaydet</button>
+          <button :disabled="saveEnabled" @click="save" class="btn btn-primary">
+            Kaydet
+          </button>
         </div>
       </div>
     </div>
@@ -64,12 +72,32 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters(["getProducts"]),
+    saveEnabled() {
+      if (this.selectedProduct !== null && this.product_count > 0) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+
+    isLoading() {
+      if (this.saveButtonClicked) {
+        return {
+          display: "block",
+        };
+      } else {
+        return {
+          display: "none",
+        };
+      }
+    },
   },
   data() {
     return {
       selectedProduct: null,
       product: null,
       product_count: null,
+      saveButtonClicked: false,
     };
   },
   methods: {
@@ -77,12 +105,27 @@ export default {
       this.product = this.$store.getters.getProduct(this.selectedProduct)[0];
     },
     save() {
+      this.saveButtonClicked = true;
       let product = {
         key: this.selectedProduct,
         count: this.product_count,
       };
       this.$store.dispatch("sellProduct", product);
     },
+  },
+  beforeRouteLeave(to, from, next) {
+    if (
+      (this.selectedProduct !== null || this.product_count > 0) &&
+      !this.saveButtonClicked
+    ) {
+      if (confirm("kaydedilmemiş değişiklikler var, Çıkmak istiyor musunuz?")) {
+        next();
+      } else {
+        next(false);
+      }
+    } else {
+      next();
+    }
   },
 };
 </script>
