@@ -8,7 +8,13 @@ const getters = {
   getProducts(state) {
     return state.products;
   },
-  getProduct(state) {},
+  getProduct(state) {
+    //getter'a parametre olarak gönderilen keyi aşağıdaki şekilde almamız gerekiyor
+    //products.filter, products içindeki verileri dönüyor ve bizim gönderdiğimiz key ile eşleşeni return ediyoruz. 
+   return key => state.products.filter((element)=>{ 
+      return element.key==key
+    })
+  },
 };
 const mutations = {
   updateProductList(state, product) {
