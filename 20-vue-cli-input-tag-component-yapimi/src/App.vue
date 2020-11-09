@@ -1,6 +1,8 @@
 <template>
   <div class="container">
     <app-tags v-model="tags"></app-tags>
+
+    {{ tags }}
   </div>
 </template>
 

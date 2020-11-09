@@ -67,6 +67,11 @@ export default {
       this.tags.splice(index, 1);
     },
   },
+  watch: {
+    tags() {
+      this.$emit("input", this.tags.join(",")); //arrayde bir değişiklik olduğunda v-model in de bu değişikliği yakalamasını sağladık
+    },
+  },
 };
 </script>
 
