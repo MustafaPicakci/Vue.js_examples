@@ -1,11 +1,11 @@
 <template>
   <div class="tag-container">
-    <span class="tag" v-for="tag in tags" :key="tag">
+    <span class="tag" v-for="(tag, index) in tags" :key="tag">
       <span class="content">{{ tag }}</span>
-      <span class="close">X</span>
+      <span @click="removeOneTag(index)" class="close">X</span>
     </span>
 
-    <input type="text" @keydown.enter="addTag" />
+    <input type="text" @keydown.enter="addTag" @keydown.delete="removeTag" />
     <div v-if="error" class="error">Bu etiket daha önceden eklenmiş!!</div>
   </div>
 </template>
@@ -20,18 +20,18 @@ export default {
   },
   methods: {
     addTag(event) {
-      let text = event.target.value;
+      let text = event.target;
       let matchedTag = false;
-      if (text.length > 0) {
+      if (text.value.length > 0) {
         this.tags.forEach((tag) => {
-          if (tag.toLowerCase() === text.toLowerCase()) {
+          if (tag.toLowerCase() === text.value.toLowerCase()) {
             matchedTag = true;
           }
         });
 
         if (!matchedTag) {
-          this.tags.push(text);
-          text = "";
+          this.tags.push(text.value);
+          text.value = "";
         } else {
           this.error = true;
 
@@ -40,6 +40,14 @@ export default {
           }, 2000);
         }
       }
+    },
+    removeTag(event) {
+      if (event.target.value.length <= 0) {
+        this.tags.splice(this.tags.length - 1, 1); // son elemanı siliyoruz
+      }
+    },
+    removeOneTag(index) {
+      this.tags.splice(index, 1);
     },
   },
 };
