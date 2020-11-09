@@ -2,6 +2,7 @@
   <div class="tag-container">
     <tag
       v-for="(tag, index) in tags"
+      :tagColor="color"
       :key="tag"
       :tag="tag"
       :index="index"
@@ -25,6 +26,11 @@ export default {
     value: {
       required: false,
     },
+    color:{
+        type:String,
+        required:false,
+        default:'primary'
+    }
   },
   components: {
     Tag,
