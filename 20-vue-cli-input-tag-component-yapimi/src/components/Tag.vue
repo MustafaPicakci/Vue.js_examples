@@ -1,12 +1,12 @@
 <template>
   <span class="tag">
     <span class="content">{{ tag }}</span>
-    <span @click="$emit('remove-one-tag-event',index)" class="close">X</span>
+    <span @click="$emit('remove-one-tag-event', index)" class="close">X</span>
   </span>
 </template>
 <script>
 export default {
-  props: ["tag", "index"]
+  props: ["tag", "index"],
 };
 </script>
 <style scoped>

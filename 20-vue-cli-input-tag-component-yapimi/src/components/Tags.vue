@@ -14,12 +14,24 @@
 <script>
 import Tag from "./Tag";
 export default {
+  created() {
+    if (this.value) {
+      if (this.value.length > 0) {
+        this.tags = this.value.split(",");
+      }
+    }
+  },
+  props: {
+    value: {
+      required: false,
+    },
+  },
   components: {
     Tag,
   },
   data() {
     return {
-      tags: ["deneme", "test"],
+      tags: [],
       error: false,
     };
   },
