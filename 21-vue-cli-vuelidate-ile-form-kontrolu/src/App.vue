@@ -48,11 +48,29 @@
           <div class="form-group">
             <label>Şifre Tekrar</label>
             <input
-              v-model="repassword"
+              v-model="$v.repassword.$model"
               type="password"
               class="form-control"
               placeholder="Şifrenizi tekrar giriniz"
             />
+            <small v-if="!$v.repassword.required" class="form-text text-danger"
+              >Bu alan zorunludur</small
+            >
+            <small v-if="!$v.repassword.numeric" class="form-text text-danger"
+              >şifre rakamlardan oluşmalıdlır</small
+            >
+            <small v-if="!$v.repassword.minLength" class="form-text text-danger"
+              >şifre en az {{ $v.repassword.$params.minLength.min }} karakterden
+              oluşmalıdlır</small
+            >
+            <small v-if="!$v.repassword.maxLength" class="form-text text-danger"
+              >şifre en fazla
+              {{ $v.repassword.$params.maxLength.max }} karakterden
+              oluşmalıdlır</small
+            >
+            <small v-if="!$v.repassword.sameAs" class="form-text text-danger"
+              >Şifreler eşleşmiyor...</small
+            >
           </div>
           <div class="form-group">
             <label>Kayıt olmak istediğiniz kategori</label>
@@ -108,6 +126,7 @@ import {
   numeric,
   minLength,
   maxLength,
+  sameAs,
 } from "vuelidate/lib/validators";
 
 export default {
@@ -141,6 +160,14 @@ export default {
       numeric,
       minLength: minLength(6),
       maxLength: maxLength(8),
+    },
+    repassword: {
+      //required:required
+      required,
+      numeric,
+      minLength: minLength(6),
+      maxLength: maxLength(8),
+      sameAs: sameAs("password"),
     },
   },
 
