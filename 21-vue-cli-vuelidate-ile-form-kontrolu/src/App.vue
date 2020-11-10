@@ -11,6 +11,7 @@
               v-model="email"
               type="email"
               class="form-control"
+              :class="{'is-invalid':$v.email.$error}"
               placeholder="E-posta adresini giriniz"
             />
             <small v-if="!$v.email.required" class="form-text text-danger"
