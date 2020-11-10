@@ -191,8 +191,16 @@ export default {
     email: {
       required: required,
       email: email,
-      uniq: (value) => {
+      /* uniq: (value) => {
         return value !== "mp@gmail.com";
+      },*/
+      uniq: (value) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(value !== "mp@gmail.com");
+          }, 1000);
+        });
+        // return value !== "mp@gmail.com";
       },
     },
     password: {
