@@ -116,6 +116,13 @@
             class="text-white btn btn-secondary rounded-0 btn-sm"
             >İlgi Alanı Ekle</a
           >
+          <small v-if="!$v.hobbies.required" class="form-text text-danger"
+            >bu alan zorunludur</small
+          >
+          <small v-if="!$v.hobbies.minLength" class="form-text text-danger"
+            >ilgi alanlarınız en az {{ $v.hobbies.$params.minLength.min }} tane
+            olmalıdır</small
+          >
 
           <ul class="list-group mt-3 mb-3 border-0">
             <li
@@ -126,6 +133,8 @@
               <input
                 type="text"
                 class="form-control mr-2"
+                :class="{ 'is-invalid': $v.hobbies.$each[index].$error }"
+                @blur="$v.hobbies.$each[index].value.$touch()"
                 v-model="hobby.value"
               />
               <button
@@ -206,6 +215,16 @@ export default {
     selectedCategory: {
       checked(val, vm) {
         return vm.selectedCategory === "Yazılım" ? true : false;
+      },
+    },
+    hobbies: {
+      required,
+      minLength: minLength(2),
+      $each: {
+        value: {
+          required,
+          minLength: minLength(6),
+        },
       },
     },
   },
