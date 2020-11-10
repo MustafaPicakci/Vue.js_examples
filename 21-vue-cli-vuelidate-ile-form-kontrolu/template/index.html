@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vuelidate ile Form Kontrolü</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h3 class="text-center mt-5">Vuelidate ile Form Kontrolü</h3>
+    <div class="d-flex justify-content-center align-content-center flex-row">
+        <div class="card p-4 mt-5  shadow">
+            <form style="width: 350px">
+                <div class="form-group">
+                    <label>E-posta Adresiniz</label>
+                    <input type="email" class="form-control" placeholder="E-posta adresini giriniz">
+                    <small class="form-text text-muted">Hata Mesajı</small>
+                </div>
+                <div class="form-group">
+                    <label>Şifre</label>
+                    <input type="password" class="form-control" placeholder="Şifrenizi giriniz">
+                </div>
+                <div class="form-group">
+                    <label>Şifre Tekrar</label>
+                    <input type="password" class="form-control" placeholder="Şifrenizi tekrar giriniz">
+                </div>
+                <div class="form-group">
+                    <label>Kayıt olmak istediğiniz kategori</label>
+                    <select class="form-control">
+                        <option value="1">Yazılım</option>
+                        <option value="1">Donanım</option>
+                        <option value="1">Cloud</option>
+                        <option value="1">Sunucular</option>
+                        <option value="1">Unix</option>
+                        <option value="1">Linux</option>
+                        <option value="1">Mac OS</option>
+                        <option value="1">Windows</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-secondary rounded-0 btn-sm">İlgi Alanı Ekle</button>
+
+                <ul class="list-group mt-3 mb-3 border-0">
+                    <li class="list-group-item d-flex pl-2">
+                        <input type="text" class="form-control mr-2">
+                        <button class="btn btn-sm btn-danger rounded-0 ">Sil</button>
+                    </li>
+                    <li class="list-group-item d-flex pl-2">
+                        <input type="text" class="form-control mr-2">
+                        <button class="btn btn-sm btn-danger rounded-0 ">Sil</button>
+                    </li>
+                    <li class="list-group-item d-flex pl-2">
+                        <input type="text" class="form-control mr-2">
+                        <button class="btn btn-sm btn-danger rounded-0 ">Sil</button>
+                    </li>
+
+                </ul>
+
+                <button class="btn btn-outline-secondary rounded-0">Kaydet</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
