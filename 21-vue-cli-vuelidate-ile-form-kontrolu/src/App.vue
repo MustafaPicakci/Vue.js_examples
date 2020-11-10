@@ -73,6 +73,28 @@
             >
           </div>
           <div class="form-group">
+            <label>Yaşınız</label>
+            <input
+              v-model="$v.age.$model"
+              type="text"
+              class="form-control"
+              placeholder="Yaşınızı giriniz"
+            />
+            <small v-if="!$v.age.required" class="form-text text-danger"
+              >Bu alan zorunludur</small
+            >
+            <small v-if="!$v.age.numeric" class="form-text text-danger"
+              >yaş rakamlardan oluşmalıdlır</small
+            >
+            <small v-if="!$v.age.between" class="form-text text-danger"
+              >kayıt olabilmek için yaşınızın
+              {{ $v.age.$params.between.min }} ile
+              {{ $v.age.$params.between.max }} arasında olması
+              gerekmektedir</small
+            >
+          </div>
+
+          <div class="form-group">
             <label>Kayıt olmak istediğiniz kategori</label>
             <select v-model="selectedCategory" class="form-control">
               <option
@@ -127,6 +149,7 @@ import {
   minLength,
   maxLength,
   sameAs,
+  between,
 } from "vuelidate/lib/validators";
 
 export default {
@@ -136,6 +159,7 @@ export default {
       password: null,
       repassword: null,
       selectedCategory: null,
+      age: null,
       categories: [
         "Yazılım",
         "Donanım",
@@ -168,6 +192,11 @@ export default {
       minLength: minLength(6),
       maxLength: maxLength(8),
       sameAs: sameAs("password"),
+    },
+    age: {
+      required,
+      numeric,
+      between: between(18, 60),
     },
   },
 
