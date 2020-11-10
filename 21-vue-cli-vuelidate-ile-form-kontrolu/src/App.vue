@@ -146,7 +146,12 @@
             </li>
           </ul>
 
-          <button class="btn btn-outline-secondary rounded-0">Kaydet</button>
+          <button
+            class="btn btn-outline-secondary rounded-0"
+            :disabled="$v.$invalid"
+          >
+            Kaydet
+          </button>
         </form>
       </div>
       <div class="card p-4 mt-3 shadow" style="width:400px">
