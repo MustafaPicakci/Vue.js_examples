@@ -7,7 +7,7 @@
           <div class="form-group">
             <label>E-posta Adresiniz</label>
             <input
-              @input="$v.email.$touch()"
+              @blur="$v.email.$touch()"
               v-model="email"
               type="email"
               class="form-control"
