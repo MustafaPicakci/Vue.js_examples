@@ -96,7 +96,7 @@
 
           <div class="form-group">
             <label>Kayıt olmak istediğiniz kategori</label>
-            <select v-model="selectedCategory" class="form-control">
+            <select v-model="$v.selectedCategory.$model" class="form-control">
               <option
                 v-for="category in categories"
                 :key="category"
@@ -104,6 +104,11 @@
                 >{{ category }}</option
               >
             </select>
+            <small
+              v-if="!$v.selectedCategory.checked"
+              class="form-text text-danger"
+              >sadece yazılım kategorisine ait kayıt oluşturabilirsiniz.</small
+            >
           </div>
 
           <a
@@ -158,7 +163,7 @@ export default {
       email: null,
       password: null,
       repassword: null,
-      selectedCategory: null,
+      selectedCategory: "Yazılım",
       age: null,
       categories: [
         "Yazılım",
@@ -197,6 +202,11 @@ export default {
       required,
       numeric,
       between: between(18, 60),
+    },
+    selectedCategory: {
+      checked(val, vm) {
+        return vm.selectedCategory === "Yazılım" ? true : false;
+      },
     },
   },
 
