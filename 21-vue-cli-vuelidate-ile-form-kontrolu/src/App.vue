@@ -191,6 +191,9 @@ export default {
     email: {
       required: required,
       email: email,
+      uniq: (value) => {
+        return value !== "mp@gmail.com";
+      },
     },
     password: {
       //required:required
