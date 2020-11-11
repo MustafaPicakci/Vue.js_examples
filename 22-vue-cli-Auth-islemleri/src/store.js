@@ -33,7 +33,7 @@ const store = new Vuex.Store({
           returnSecureToken: true,
         })
         .then((response) => {
-          console.log(response);
+          commit("setToken", response.data.idToken);
         });
     },
     logout({ commit, dispatch, state, authData }) {},
