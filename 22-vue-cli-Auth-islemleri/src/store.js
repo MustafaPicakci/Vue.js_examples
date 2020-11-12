@@ -22,8 +22,16 @@ const store = new Vuex.Store({
     initAuth({ dispatch, commit }) {
       let token = localStorage.getItem("token");
       if (token) {
-        commit("setToken", token);
-        router.push("/");
+        let expirationDate = localStorage.getItem("expirationDate");
+        let time = new Date().getTime(); //ms cinsinden şu anki zaman
+
+        if (time >= expirationDate) {
+          console.log("token süresi geçmiş");
+          dispatch("logout");
+        } else {
+          commit("setToken", token);
+          router.push("/");
+        }
       } else {
         return false;
       }
@@ -46,13 +54,17 @@ const store = new Vuex.Store({
           console.log(response);
           commit("setToken", response.data.idToken);
           localStorage.setItem("token", response.data.idToken);
+          //localStorage.setItem("expirationDate",new Date.getTime() + +response.data.expiresIn *1000);
+          localStorage.setItem("expirationDate", new Date().getTime() + 5000);
 
-          dispatch("setTimeoutTimer", +response.data.expiresIn); //+ int'e dönüştürme işlemi yapıyor (parse gibi)
+          // dispatch("setTimeoutTimer", +response.data.expiresIn); //+ int'e dönüştürme işlemi yapıyor (parse gibi)
+          dispatch("setTimeoutTimer", 5000);
         });
     },
     logout({ commit }) {
       commit("clearToken");
       localStorage.removeItem("token");
+      localStorage.removeItem("expirationDate");
       router.replace("/auth");
     },
     setTimeoutTimer({ dispatch }, expiresIn) {
