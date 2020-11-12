@@ -46,11 +46,19 @@ const store = new Vuex.Store({
           console.log(response);
           commit("setToken", response.data.idToken);
           localStorage.setItem("token", response.data.idToken);
+
+          dispatch("setTimeoutTimer", +response.data.expiresIn); //+ int'e dönüştürme işlemi yapıyor (parse gibi)
         });
     },
-    logout({ commit, dispatch, state }) {
+    logout({ commit }) {
       commit("clearToken");
       localStorage.removeItem("token");
+      router.replace("/auth");
+    },
+    setTimeoutTimer({ dispatch }, expiresIn) {
+      setTimeout(() => {
+        dispatch("logout");
+      }, expiresIn);
     },
   },
   getters: {
