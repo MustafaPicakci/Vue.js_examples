@@ -30,6 +30,9 @@ const store = new Vuex.Store({
           dispatch("logout");
         } else {
           commit("setToken", token);
+          let timerSecond = +expirationDate - time;
+          console.log(timerSecond);
+          dispatch("setTimeoutTimer", timerSecond);
           router.push("/");
         }
       } else {
@@ -54,11 +57,11 @@ const store = new Vuex.Store({
           console.log(response);
           commit("setToken", response.data.idToken);
           localStorage.setItem("token", response.data.idToken);
-          //localStorage.setItem("expirationDate",new Date.getTime() + +response.data.expiresIn *1000);
-          localStorage.setItem("expirationDate", new Date().getTime() + 5000);
+          localStorage.setItem("expirationDate",new Date().getTime() + +response.data.expiresIn *1000);
+          //localStorage.setItem("expirationDate", new Date().getTime() + 10000);
 
-          // dispatch("setTimeoutTimer", +response.data.expiresIn); //+ int'e dönüştürme işlemi yapıyor (parse gibi)
-          dispatch("setTimeoutTimer", 5000);
+           dispatch("setTimeoutTimer", +response.data.expiresIn); //+ int'e dönüştürme işlemi yapıyor (parse gibi)
+          //dispatch("setTimeoutTimer", 10000);
         });
     },
     logout({ commit }) {
