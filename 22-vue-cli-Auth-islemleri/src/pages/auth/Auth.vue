@@ -65,11 +65,11 @@ export default {
   },
   methods: {
     onSubmit() {
-      
-      this.$store.dispatch("login", { ...this.user, isUser: this.isUser }) //"...this.user yazan yere user onjesindeki verilerin kesip yapıştırıldığını düşün"
-        .then((response)=>{
-            this.$router.push("/")
-        })
+      this.$store
+        .dispatch("login", { ...this.user, isUser: this.isUser }) //"...this.user yazan yere user onjesindeki verilerin kesip yapıştırıldığını düşün"
+        .then((response) => {
+          this.$router.push("/");
+        });
     },
   },
 };
